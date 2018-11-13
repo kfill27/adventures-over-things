@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'families#index'
+  devise_for :users
   resources :families do
     resources :family_members
   end
