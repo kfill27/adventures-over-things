@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @family.name %>
+</p>
+
+<h3>Family Members</h3>
+<% @family.family_members.each do |family_member| %>
+  <p><%= family_member.full_name %>: <%= family_member.age %> years old</p>
+<% end %>
+
+<h3>Adventures</h3>
+<% @family.adventures.each do |adventure| %>
+  <p><%= adventure.title%> || <%= adventure.description %></p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>
