@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contributor: one
+  amount: MyString
+  adventure: one
+
+two:
+  contributor: two
+  amount: MyString
+  adventure: two

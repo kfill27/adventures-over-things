@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_005506) do
+ActiveRecord::Schema.define(version: 2018_11_17_210227) do
 
   create_table "adventures", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,24 @@ ActiveRecord::Schema.define(version: 2018_11_13_005506) do
     t.datetime "updated_at", null: false
     t.integer "family_member_id"
     t.index ["family_id"], name: "index_adventures_on_family_id"
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.integer "contributor_id"
+    t.string "amount"
+    t.integer "adventure_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["adventure_id"], name: "index_contributions_on_adventure_id"
+    t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
+  end
+
+  create_table "contributors", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contributors_on_user_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -51,7 +69,9 @@ ActiveRecord::Schema.define(version: 2018_11_13_005506) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "family_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["family_id"], name: "index_users_on_family_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
