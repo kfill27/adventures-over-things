@@ -14,9 +14,16 @@
  *= require_self
  */
 
+.mb3 {
+  margin-bottom: 3px;
+}
 
 .mt10 {
   margin-top: 10px;
+}
+
+.mr10 {
+  margin-right: 10px;
 }
 
 .ml10 {

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :families do
     resources :family_members
   end
-  resources :adventures
+  resources :adventures do
+    resources :contributions
+  end
+  resources :charges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -15,8 +15,9 @@
         <% @family_member.adventures.each do |adventure| %>
         <div>
           <div class="uk-card uk-card-default uk-card-body">
-            <h3 class="uk-card-title"><%= adventure.title%></h3>
+            <h3 class="uk-card-title"><%= adventure.title%><span class="uk-badge ml10 mb3">$<%= adventure.cost %></span></h3>
             <p><%= adventure.description %></p>
+            <%= link_to 'Contribute', new_adventure_contribution_path(adventure), class: "uk-button uk-button-default" %>
           </div>
         </div>
         <% end %>
@@ -24,7 +25,7 @@
     </div>
   </div>
 <% else %>
-  <div class="uk-text-center">This family member does not have any individual adventures yet. Please create one!</div>
+  <div class="uk-text-center">This family member does not have any individual adventures yet!</div>
 <% end %>
 
 <%= link_to family_path(@family_member.family_id), class: "uk-button uk-button-secondary mt10 ml10" do %>

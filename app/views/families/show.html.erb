@@ -27,7 +27,7 @@
       <% @family.adventures.where(family_member_id: nil).each do |adventure| %>
       <div>
         <div class="uk-card uk-card-default uk-card-body">
-          <h3 class="uk-card-title"><%= adventure.title%></h3>
+          <h3 class="uk-card-title uk-inline"><%= adventure.title %><span class="uk-badge ml10 mb3">$<%= adventure.cost %></span></h3>
           <p><%= adventure.description %></p>
         </div>
       </div>
@@ -35,5 +35,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Back', families_path %>
