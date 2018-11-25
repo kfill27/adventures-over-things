@@ -1,15 +1,8 @@
 class FamilyMembersController < ApplicationController
-  before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :set_family, only: [:show]
 
-  # GET /families
-  # GET /families.json
-  # def index
-  #   @family_members = FamilyMember.all
-  # end
-
-  # GET /families/1
-  # GET /families/1.json
   def show
+    @contribution = Contribution.new
   end
 
   # GET /families/new

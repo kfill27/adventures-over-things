@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'families#index'
+  root 'families#show', id: '1'
   devise_for :users
   resources :families do
     resources :family_members

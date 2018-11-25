@@ -17,7 +17,34 @@
           <div class="uk-card uk-card-default uk-card-body">
             <h3 class="uk-card-title"><%= adventure.title%><span class="uk-badge ml10 mb3">$<%= adventure.cost %></span></h3>
             <p><%= adventure.description %></p>
-            <%= link_to 'Contribute', new_adventure_contribution_path(adventure), class: "uk-button uk-button-default" %>
+            <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-example">Contribute</button>
+            <!-- This is the modal -->
+            <div id="modal-example" uk-modal>
+              <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">How much do you want to contribute to this adventure?</h2>
+                  <%= form_with(url: adventure_contributions_path(adventure_id: adventure.id, contributor: current_user), local: true) do |form| %>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                    <div class="field">
+                      <%= form.label :amount %>
+                      <%= form.text_field :amount, class: "uk-input" %>
+                    </div>
+
+                    <div class="actions uk-text-right mt10">
+                      <button class="uk-button uk-button-default uk-modal-close mr10" type="button">Cancel</button>
+                      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" style="uk-button uk-button-default"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="Contributing to Adventure"
+                        data-amount=""
+                        data-locale="auto">
+                      </script>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
           </div>
         </div>
         <% end %>
